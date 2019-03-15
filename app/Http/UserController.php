@@ -38,7 +38,7 @@ class UserController extends Controller
 		$this->validate($request, $rules);
 
 		$user = $request->user();
-		$user->password = bcrypt($request->input('new_password'));
+		$user->password = Hash::make($request->input('new_password'));
 		$user->saveOrFail();
 
 		return response()->json(compact('user'));

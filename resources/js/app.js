@@ -3,6 +3,9 @@ import Vue from 'vue';
 import VueNoty from 'vuejs-noty';
 import axios from 'axios';
 
+import Vuetify from 'vuetify';
+
+
 window.$ = window.jQuery = $;
 window.axios = axios;
 require('bootstrap');
@@ -13,6 +16,8 @@ Vue.use(VueNoty, {
 	theme: 'bootstrap-v4',
 	timeout: 3000
 });
+
+Vue.use(Vuetify);
 
 import router from './router';
 import store from './store/index';
@@ -49,6 +54,43 @@ axios.interceptors.response.use(response => {
 
 	return Promise.reject(error);
 });
+
+
+/*********************************
+/* VuetifyToast
+**********************************/
+import VuetifyToast from 'vuetify-toast-snackbar'
+
+Vue.use(VuetifyToast, {
+	x: 'right', // default
+	y: 'top',
+	color: 'info', // default
+	icon: 'info',
+	timeout: 3000, // default
+	dismissable: true, // default
+	autoHeight: false, // default
+	multiLine: false, // default
+	vertical: false, // default
+	shorts: {
+		custom: {
+			color: 'purple'
+		}
+	},
+	property: '$toast' // default
+})
+
+/*************************
+ * VeeValidate
+ *************************/
+import VeeValidate from 'vee-validate';
+import VueValidationEs from 'vee-validate/dist/locale/es';
+const config = {
+	locale: 'es',
+  	dictionary: {
+	  	es: VueValidationEs
+  	}
+};
+Vue.use(VeeValidate, config);
 
 Vue.component('app', App);
 

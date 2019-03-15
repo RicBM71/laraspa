@@ -11,17 +11,17 @@ class AuthenticateController extends Controller
 	public function authenticate(Request $request)
 	{
 		$rules = [
-			'email'    => 'required|email',
+			'username'    => 'required',
 			'password' => 'required'
 		];
 
 		$this->validate($request, $rules);
 
-		$credentials = $request->only('email', 'password');
+		$credentials = $request->only('username', 'password');
 
 		try {
 			if(!$token = JWTAuth::attempt($credentials)) {
-				return response()->json(['error' => 'Invalid login credential'], 401);
+				return response()->json(['error' => 'Las credenciales no son correctas!'], 401);
 			}
 		} catch(JWTException $e) {
 			return response()->json(['error' => 'Could not create token'], 500);

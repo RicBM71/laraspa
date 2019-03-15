@@ -5,10 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Anindya Dhruba">
         <meta name="description" content="Laravel Vue SPA">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }} - Starter Boilerplate SPA made with Laravel 5.6, Bootstrap 4, JWT Auth, Vue 2, Vue-router 3, Vuex 3, Axios and <3</title>
+        <title>{{ config('app.name') }} </title>
 
-        <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+        <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+
+        <!-- Styles -->
+        <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+
         <script>
             window.Laravel = {!! json_encode([
                 'csrfToken' => csrf_token(),
@@ -19,9 +25,12 @@
     </head>
     <body>
         <div id="app">
-            <app></app>
+            <v-app id="inspire">
+                    <router-view></router-view>
+            </v-app>
         </div>
 
         <script src="{{ mix('/js/app.js') }}"></script>
+        
     </body>
 </html>
