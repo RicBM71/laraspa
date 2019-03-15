@@ -1,5 +1,5 @@
 <template>
-    <div v-if="id > 0" v-show="show">
+    <div>
         <h3>Permisos Específicos</h3>
         <v-layout row wrap>
             <v-flex sm2
@@ -28,7 +28,7 @@ export default {
     data(){
         return{
             permiso_usr: "",
-            show: false
+            show: true
         }
     },
     mounted(){

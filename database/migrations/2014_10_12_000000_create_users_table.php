@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('blocked_at')->nullable();
             $table->boolean('blocked')->default(false);
             $table->timestamps();
-
         });
     }
 

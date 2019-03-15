@@ -159,20 +159,18 @@ export default {
     },
     methods:{
         abrir(name){
-            //console.log(name);
-
             this.$router.push({path: name});
-            //console.log('llega');
         },
         Home(){
             this.$router.push({name: 'dash'});
         },
         Logout() {
-
+            //console.log('Logout');
             jwtToken.removeToken();
 				this.$store.dispatch('unsetAuthUser')
 					.then(() => {
-						this.$noty.success('You are logged out');
+                        //this.$noty.success('You are logged out');
+                        this.$toast.success('Logout, hasta pronto...');
 						this.$router.push({name: 'index'});
 					});
         },

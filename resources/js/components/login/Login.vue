@@ -10,6 +10,9 @@
 	import {mapActions} from "vuex";
 
 	export default {
+        mounted(){
+          //  console.log('Login');
+        },
 		components: {
 			'login-form': LoginForm
 		},

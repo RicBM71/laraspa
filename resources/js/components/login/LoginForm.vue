@@ -37,7 +37,7 @@
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn color="primary" type="submit" :disabled="loading">
-					        <span v-show="loading">Logging in</span>
+					        <span v-show="loading">Espere...</span>
 					        <span v-show="!loading">Login</span>
                         </v-btn>
 

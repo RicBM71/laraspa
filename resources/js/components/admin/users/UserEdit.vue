@@ -120,8 +120,10 @@
                         </v-text-field>
                     </v-flex>
                     <v-flex sm4>
-                         <user-role v-bind:user_id="this.user.id" v-bind:role_user="this.role_user"></user-role>
-                         <user-permiso :id="this.user.id" :permisos="this.permisos" :permisos_selected="permisos_selected"></user-permiso>
+                        <div v-if="user.id > 0">
+                            <user-role v-bind:user_id="this.user.id" v-bind:role_user="this.role_user"></user-role>
+                            <user-permiso :id="this.user.id" :permisos="this.permisos" :permisos_selected="permisos_selected"></user-permiso>
+                        </div>
                     </v-flex>
                     <v-flex sm6>
                         <div class="text-xs-center">

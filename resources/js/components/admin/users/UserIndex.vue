@@ -87,7 +87,7 @@
     mounted()
     {
 
-        axios.get('/api/admin/users')
+        axios.get('/admin/users')
             .then(res => {
 
                 this.usuarios = res.data;
@@ -125,7 +125,7 @@
         deleteItem () {
             this.dialog = false;
 
-            axios.post('/api/admin/users/'+this.user_id,{_method: 'delete'})
+            axios.post('/admin/users/'+this.user_id,{_method: 'delete'})
                 .then(response => {
 
                 if (response.status == 200){

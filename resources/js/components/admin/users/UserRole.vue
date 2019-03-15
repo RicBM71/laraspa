@@ -57,7 +57,7 @@ export default {
     methods:{
                 //actualizamos role x usuario
         setUserRole(){
-            //console.log(this.role_selected);
+            console.log(this.role_selected);
             axios({
                 method: 'put',
                 url: '/admin/users/'+this.user_id+'/roles',

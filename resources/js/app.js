@@ -10,12 +10,12 @@ window.$ = window.jQuery = $;
 window.axios = axios;
 require('bootstrap');
 
-Vue.use(VueNoty, {
-	progressBar: false,
-	layout: 'bottomRight',
-	theme: 'bootstrap-v4',
-	timeout: 3000
-});
+// Vue.use(VueNoty, {
+// 	progressBar: false,
+// 	layout: 'bottomRight',
+// 	theme: 'bootstrap-v4',
+// 	timeout: 3000
+// });
 
 Vue.use(Vuetify);
 
