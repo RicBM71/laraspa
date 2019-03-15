@@ -7,7 +7,9 @@
                 <v-toolbar dark color="primary">
                     <v-toolbar-title>Login</v-toolbar-title>
                     <v-spacer></v-spacer>
-
+                    <v-btn flat icon color="blue lighten-2" :to="{name: 'index'}">
+                        <v-icon>home</v-icon>
+                    </v-btn>
                 </v-toolbar>
                 <v-form @submit.prevent="login">
                     <v-card-text>
@@ -35,6 +37,9 @@
                         ></v-text-field>
                     </v-card-text>
                     <v-card-actions>
+                         <v-btn flat icon color="gray" :to="{name: 'index'}">
+                            <v-icon>help_outline</v-icon>
+                        </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn color="primary" type="submit" :disabled="loading">
 					        <span v-show="loading">Espere...</span>
@@ -42,6 +47,7 @@
                         </v-btn>
 
                     </v-card-actions>
+
                 </v-form>
             </v-card>
           </v-flex>

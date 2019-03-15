@@ -79,12 +79,12 @@ export default [
                 meta: {requiresAuth: true}
             },
 
-			{
-				path: '*',
-				redirect: {
-					name: '404'
-				}
-			}
 		]
-	},
+    },
+    {
+        path: '*',
+        redirect: {
+            name: 'index'
+        }
+    }
 ];
