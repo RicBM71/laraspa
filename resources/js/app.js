@@ -1,21 +1,15 @@
 import $ from 'jquery';
 import Vue from 'vue';
-import VueNoty from 'vuejs-noty';
 import axios from 'axios';
 
 import Vuetify from 'vuetify';
 
 
-window.$ = window.jQuery = $;
+//window.$ = window.jQuery = $;
 window.axios = axios;
-require('bootstrap');
 
-// Vue.use(VueNoty, {
-// 	progressBar: false,
-// 	layout: 'bottomRight',
-// 	theme: 'bootstrap-v4',
-// 	timeout: 3000
-// });
+//require('bootstrap');
+
 
 Vue.use(Vuetify);
 
