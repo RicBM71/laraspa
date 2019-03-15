@@ -35452,7 +35452,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n\t              Get Started\n\t            "
+                                "\r\n\t              Get Started\r\n\t            "
                               )
                             ]
                           )
@@ -35487,7 +35487,7 @@ var render = function() {
                             _vm._v(" "),
                             _c("span", { staticClass: "subheading" }, [
                               _vm._v(
-                                "\n\t                Cras facilisis mi vitae nunc\n\t              "
+                                "\r\n\t                Cras facilisis mi vitae nunc\r\n\t              "
                               )
                             ])
                           ])
@@ -35560,7 +35560,7 @@ var render = function() {
                                           _vm._v(" "),
                                           _c("v-card-text", [
                                             _vm._v(
-                                              "\n\t                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\n\t                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\t                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\n\t                    "
+                                              "\r\n\t                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\r\n\t                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\r\n\t                    "
                                             )
                                           ])
                                         ],
@@ -35615,7 +35615,7 @@ var render = function() {
                                           _vm._v(" "),
                                           _c("v-card-text", [
                                             _vm._v(
-                                              "\n\t                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\n\t                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\t                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\n\t                    "
+                                              "\r\n\t                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\r\n\t                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\r\n\t                    "
                                             )
                                           ])
                                         ],
@@ -35677,7 +35677,7 @@ var render = function() {
                                           _vm._v(" "),
                                           _c("v-card-text", [
                                             _vm._v(
-                                              "\n\t                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\n\t                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\t                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\n\t                    "
+                                              "\r\n\t                      Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\r\n\t                      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t                      Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\r\n\t                    "
                                             )
                                           ])
                                         ],
@@ -35744,7 +35744,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n\t              Get Started\n\t            "
+                                "\r\n\t              Get Started\r\n\t            "
                               )
                             ]
                           )
@@ -35795,7 +35795,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("v-card-text", [
                                     _vm._v(
-                                      "\n\t                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\n\t                  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\t                  Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\n\t                "
+                                      "\r\n\t                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\r\n\t                  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t                  Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.\r\n\t                "
                                     )
                                   ])
                                 ],
@@ -35828,7 +35828,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("v-card-text", [
                                     _vm._v(
-                                      "\n\t                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\n\t                "
+                                      "\r\n\t                  Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.\r\n\t                "
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -35961,12 +35961,12 @@ var render = function() {
                           { staticClass: "white--text ml-3" },
                           [
                             _vm._v(
-                              "\n\t              Made with\n\t              "
+                              "\r\n\t              Made with\r\n\t              "
                             ),
                             _c("v-icon", { staticClass: "red--text" }, [
                               _vm._v("favorite")
                             ]),
-                            _vm._v("\n\t              by "),
+                            _vm._v("\r\n\t              by "),
                             _c(
                               "a",
                               {
@@ -35978,7 +35978,7 @@ var render = function() {
                               },
                               [_vm._v("Vuetify")]
                             ),
-                            _vm._v("\n\t              and "),
+                            _vm._v("\r\n\t              and "),
                             _c(
                               "a",
                               {
@@ -79584,7 +79584,7 @@ function () {
         switch (_context.prev = _context.next) {
           case 0:
             if (!(_helpers_jwt_token__WEBPACK_IMPORTED_MODULE_3__["default"].getToken() && !_store_index__WEBPACK_IMPORTED_MODULE_4__["default"].getters.isLoggedIn)) {
-              _context.next = 7;
+              _context.next = 8;
               break;
             }
 
@@ -79594,35 +79594,36 @@ function () {
           case 3:
             _ref2 = _context.sent;
             authUser = _ref2.data;
-            _context.next = 7;
+            console.log(authUser);
+            _context.next = 8;
             return _store_index__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch('setAuthUser', authUser);
 
-          case 7:
+          case 8:
             if (!to.meta.requiresAuth) {
-              _context.next = 13;
+              _context.next = 14;
               break;
             }
 
             if (!(_store_index__WEBPACK_IMPORTED_MODULE_4__["default"].getters.isLoggedIn || _helpers_jwt_token__WEBPACK_IMPORTED_MODULE_3__["default"].getToken())) {
-              _context.next = 12;
+              _context.next = 13;
               break;
             }
 
             return _context.abrupt("return", next());
 
-          case 12:
+          case 13:
             return _context.abrupt("return", next({
               name: 'login'
             }));
 
-          case 13:
+          case 14:
             if (!to.meta.requiresGuest) {
-              _context.next = 19;
+              _context.next = 20;
               break;
             }
 
             if (!(_store_index__WEBPACK_IMPORTED_MODULE_4__["default"].getters.isLoggedIn || _helpers_jwt_token__WEBPACK_IMPORTED_MODULE_3__["default"].getToken())) {
-              _context.next = 18;
+              _context.next = 19;
               break;
             }
 
@@ -79630,13 +79631,13 @@ function () {
               name: 'index'
             }));
 
-          case 18:
+          case 19:
             return _context.abrupt("return", next());
 
-          case 19:
+          case 20:
             next();
 
-          case 20:
+          case 21:
           case "end":
             return _context.stop();
         }

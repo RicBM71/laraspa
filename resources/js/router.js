@@ -17,7 +17,8 @@ const router = new VueRouter({
 router.beforeEach(async (to, from, next) => {
 	// just logged in: localStorage has token, but state does not have auth user
 	if (jwtToken.getToken() && !store.getters.isLoggedIn) {
-		let {data: authUser} = await axios.get(api.currentUser);
+        let {data: authUser} = await axios.get(api.currentUser);
+        console.log(authUser);
 		await store.dispatch('setAuthUser', authUser);
 	}
 
