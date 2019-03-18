@@ -1,7 +1,10 @@
 <template>
     <div v-if="registros">
         <v-layout row wrap>
-			<v-flex xs12>
+            <v-flex xs10>
+                <h2>Roles</h2>
+            </v-flex>
+			<v-flex xs2>
 				<v-btn v-on:click="create" small >
 					<v-icon small>add</v-icon> Crear Role
 				</v-btn>
@@ -68,7 +71,7 @@
             .then(res => {
 
                 this.roles = res.data.roles;
-                //console.log(res.data);
+              //  console.log(res.data);
                 this.registros = true;
             })
     },

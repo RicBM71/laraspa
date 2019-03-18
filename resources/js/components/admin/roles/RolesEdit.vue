@@ -45,7 +45,7 @@
                         </v-text-field>
                     </v-flex>
                     <v-flex sm12>
-                        <!-- <permisos-component v-if="this.role.id > 0" v-bind:role_id="this.role.id" v-bind:permiso_role="this.permiso_role"></permisos-component> -->
+                        <!-- <role-permisos v-if="this.role.id > 0" v-bind:role_id="this.role.id" v-bind:permiso_role="this.permiso_role"></role-permisos> -->
                         <v-container v-if="this.role.id > 0">
                             <h3>Permisos</h3>
 
@@ -82,13 +82,17 @@
 	</div>
 </template>
 <script>
-    import moment from 'moment'
-
+import moment from 'moment'
+import RolePermisos from './RolePermisos'
 
 	export default {
 		$_veeValidate: {
       		validator: 'new'
-    	},
+        },
+        components: {
+            'role-permisos': RolePermisos
+
+		},
     	data () {
       		return {
                 role: {

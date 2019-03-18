@@ -24,6 +24,7 @@
     </div>
 </template>
 <script>
+
 export default {
     props:['role_id','permiso_role'],
     data () {
@@ -32,7 +33,7 @@ export default {
             permisos_selected: [],
         }
     },
-   mounted(){
+    mounted(){
 
             //cargamos todos los permisos disponibles
         axios.get('/admin/permissions')

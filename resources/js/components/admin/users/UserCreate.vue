@@ -1,8 +1,9 @@
 <template>
-	<div>
+	<div v-show="showMainDiv">
+        <mod-menu :showMenuCli="showMenuCli" :x="x" :y="y" :items="items"></mod-menu>
         <h2>Usuarios</h2>
         <v-form>
-            <v-container>
+            <v-container @contextmenu="showMenu">
                 <v-layout row wrap>
                     <v-flex sm4>
                         <v-text-field
@@ -143,7 +144,7 @@
     import moment from 'moment'
     import UserRole from './UserRole'
     import UserPermiso from './UserPermiso'
-
+    import ModMenu from '@/components/shared/Modmenu'
 
 	export default {
 		$_veeValidate: {
@@ -151,7 +152,8 @@
         },
         components: {
             'user-role': UserRole,
-            'user-permiso': UserPermiso
+            'user-permiso': UserPermiso,
+            'mod-menu': ModMenu
 		},
     	data () {
       		return {
@@ -181,6 +183,16 @@
                 show: false,
                 menu2: false,
 
+                showMainDiv: true,
+                showMenuCli: false,
+                x: 0,
+                y: 0,
+                items: [
+                    { title: 'Usuarios', name: 'users', icon: 'people' },
+                    { title: 'Crear', name: 'create-user', icon: 'person_add' },
+                    { title: 'Roles', name: 'roles', icon: 'share' },
+                    { title: 'Home', name: 'dash', icon: 'home' },
+                ]
       		}
         },
         mounted(){
@@ -201,6 +213,18 @@
 
         },
     	methods:{
+            showMenu (e) {
+
+                e.preventDefault()
+
+                this.showMenuCli = false
+                this.x = e.clientX
+                this.y = e.clientY
+
+                this.$nextTick(() => {
+                    this.showMenuCli = true
+                })
+            },
             submit() {
 
                 //console.log("Edit user (submit):"+this.user.id);

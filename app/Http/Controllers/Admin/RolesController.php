@@ -76,7 +76,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)    {
 
-       // $this->authorize('update',$role);
+        $this->authorize('update',$role);
 
         $permisos = Permission::pluck('name','id');
 

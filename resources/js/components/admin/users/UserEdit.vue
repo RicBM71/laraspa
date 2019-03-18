@@ -1,8 +1,27 @@
 <template>
-	<div>
+	<div v-show="showMainDiv">
+        <!-- <v-menu
+            v-model="showMenuCli"
+            :position-x="x"
+            :position-y="y"
+            absolute
+            offset-y
+            >
+            <v-list>
+                <v-list-tile
+                v-for="(item, index) in items"
+                :key="index"
+                @click="goTo(item.name)"
+                >
+                <v-list-tile-title> <v-icon>home</v-icon>{{ item.title }}</v-list-tile-title>
+                </v-list-tile>
+            </v-list>
+        </v-menu> -->
+        <mod-menu :showMenuCli="showMenuCli" :x="x" :y="y" :items="items"></mod-menu>
+
         <h2>Usuarios</h2>
         <v-form>
-            <v-container>
+            <v-container @contextmenu="showMenu">
                 <v-layout row wrap>
                     <v-flex sm3>
                         <v-text-field
@@ -88,7 +107,6 @@
                         >
 
                             <v-text-field
-
                                 slot="activator"
                                 :value="computedDateFormat"
                                 clearable
@@ -143,8 +161,7 @@
     import moment from 'moment'
     import UserRole from './UserRole'
     import UserPermiso from './UserPermiso'
-
-
+    import ModMenu from '@/components/shared/Modmenu'
 
 	export default {
 		$_veeValidate: {
@@ -152,7 +169,8 @@
     	},
         components: {
             'user-role': UserRole,
-            'user-permiso': UserPermiso
+            'user-permiso': UserPermiso,
+            'mod-menu': ModMenu
 
 		},
     	data () {
@@ -180,9 +198,20 @@
                 color: "error",
                 icon: "warning",
                 enviando: false,
+
                 show: false,
                 menu2: false,
 
+                showMainDiv: false,
+                showMenuCli: false,
+                x: 0,
+                y: 0,
+                items: [
+                    { title: 'Usuarios', name: 'users', icon: 'people' },
+                    { title: 'Crear', name: 'create-user', icon: 'person_add' },
+                    { title: 'Roles', name: 'roles', icon: 'share' },
+                    { title: 'Home', name: 'dash', icon: 'home' },
+                ]
       		}
         },
         mounted(){
@@ -193,7 +222,8 @@
                 var id = this.$route.params.id;
                 axios.get('/admin/users/'+id+'/edit')
                     .then(res => {
-                        console.log(res.data.role_user);
+                        //console.log(res.data.role_user);
+                        this.showMainDiv=true;
                         this.user = res.data.user;
                         this.role_user = res.data.role_user;
                         this.permisos = res.data.permisos;
@@ -222,6 +252,18 @@
 
         },
     	methods:{
+            showMenu (e) {
+
+                e.preventDefault()
+
+                this.showMenuCli = false
+                this.x = e.clientX
+                this.y = e.clientY
+
+                this.$nextTick(() => {
+                    this.showMenuCli = true
+                })
+            },
             submit() {
 
                 //console.log("Edit user (submit):"+this.user.id);

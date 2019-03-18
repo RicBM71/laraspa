@@ -111,7 +111,7 @@ export default {
         menu: true,
         dialog: false,
         drawer: true,
-      items: [
+        items: [
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
@@ -122,11 +122,7 @@ export default {
             { text: 'Roles', name: 'roles' },
           ]
         },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Send feedback' },
-        { icon: 'help', text: 'Help' },
-        { icon: 'phonelink', text: 'App downloads' },
-        { icon: 'keyboard', text: 'Go to the old version' }
+        { icon: 'settings', text: 'Settings' }
       ]
     }),
     computed: mapState({

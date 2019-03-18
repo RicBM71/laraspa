@@ -15,14 +15,32 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-	// just logged in: localStorage has token, but state does not have auth user
+    // just logged in: localStorage has token, but state does not have auth user
+
+    // if(jwtToken.exp < Date.now()){
+    //     //console.log(jwtToken.getToken());
+    //     //token is valid, do your stuff
+    //   }else {
+    //     //console.log('expirada');
+    //     jwtToken.removeToken();
+    //     //return next({name: 'login'});
+    //     //token expired, regenerate it and set it to the cookie
+    //     //also update the expire time of the cookie
+    //   }
+
 	if (jwtToken.getToken() && !store.getters.isLoggedIn) {
-        let {data: authUser} = await axios.get(api.currentUser);
-        console.log(authUser);
+
+        let {data: authUser} = await axios.get(api.currentUser)
+            .catch(err => {
+                jwtToken.removeToken();
+            });
+
 		await store.dispatch('setAuthUser', authUser);
 	}
 
 	if (to.meta.requiresAuth) {
+
+
 		if (store.getters.isLoggedIn || jwtToken.getToken())
 			return next();
 		else

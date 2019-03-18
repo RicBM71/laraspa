@@ -12,7 +12,10 @@
 					</v-card-actions>
 				</v-card>
 			</v-dialog>
-			<v-flex xs12>
+            <v-flex xs10>
+                <h2>Usuarios</h2>
+            </v-flex>
+			<v-flex xs2>
 				<v-btn v-on:click="create" small >
 					<v-icon small>add</v-icon> Crear Usuario
 				</v-btn>

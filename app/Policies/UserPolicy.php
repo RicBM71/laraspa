@@ -54,7 +54,10 @@ class UserPolicy
      */
     public function update(User $authUser, User $user)
     {
-       return $authUser->hasPermissionTo('Usuarios');
+
+        if ($user->id == 1 && $authUser->id != 1) return false;
+
+        return $authUser->hasPermissionTo('Usuarios');
     }
 
     /**
