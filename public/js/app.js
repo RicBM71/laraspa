@@ -2923,6 +2923,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3724,11 +3725,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   $_veeValidate: {
@@ -3739,7 +3735,8 @@ __webpack_require__.r(__webpack_exports__);
       loading: false,
       form: {
         username: null,
-        password: null
+        password: null,
+        blocked: false
       },
       error: {
         username: null,
@@ -35148,9 +35145,15 @@ var render = function() {
                             return [
                               _c("td", [_vm._v(_vm._s(props.item.id))]),
                               _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-left" }, [
-                                _vm._v(_vm._s(props.item.name))
-                              ]),
+                              props.item.blocked == false
+                                ? _c("td", { staticClass: "text-xs-left" }, [
+                                    _vm._v(_vm._s(props.item.name))
+                                  ])
+                                : _c("td", { staticClass: "text-xs-left" }, [
+                                    _c("span", { staticClass: "red--text" }, [
+                                      _vm._v("BLOQUEADO ->")
+                                    ])
+                                  ]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-xs-left" }, [
                                 _vm._v(_vm._s(props.item.username))
@@ -35227,7 +35230,7 @@ var render = function() {
                       ],
                       null,
                       false,
-                      2420765121
+                      2515681733
                     )
                   })
                 ],
@@ -36553,20 +36556,6 @@ var render = function() {
                           _c(
                             "v-card-actions",
                             [
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: {
-                                    flat: "",
-                                    icon: "",
-                                    color: "gray",
-                                    to: { name: "index" }
-                                  }
-                                },
-                                [_c("v-icon", [_vm._v("help_outline")])],
-                                1
-                              ),
-                              _vm._v(" "),
                               _c("v-spacer"),
                               _vm._v(" "),
                               _c(
@@ -79920,15 +79909,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ./resources/js/components/shared/Modmenu.vue ***!
   \****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modmenu_vue_vue_type_template_id_740ec322___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modmenu.vue?vue&type=template&id=740ec322& */ "./resources/js/components/shared/Modmenu.vue?vue&type=template&id=740ec322&");
 /* harmony import */ var _Modmenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modmenu.vue?vue&type=script&lang=js& */ "./resources/js/components/shared/Modmenu.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Modmenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Modmenu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -79958,7 +79946,7 @@ component.options.__file = "resources/js/components/shared/Modmenu.vue"
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/shared/Modmenu.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Anindya Dhruba">
+        <meta name="author" content="Sanaval Tecnología">
         <meta name="description" content="Laravel Vue SPA">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 

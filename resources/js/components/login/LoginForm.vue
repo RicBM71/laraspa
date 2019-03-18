@@ -37,17 +37,12 @@
                         ></v-text-field>
                     </v-card-text>
                     <v-card-actions>
-                         <v-btn flat icon color="gray" :to="{name: 'index'}">
-                            <v-icon>help_outline</v-icon>
-                        </v-btn>
                         <v-spacer></v-spacer>
                         <v-btn color="primary" type="submit" :disabled="loading">
 					        <span v-show="loading">Espere...</span>
 					        <span v-show="!loading">Login</span>
                         </v-btn>
-
                     </v-card-actions>
-
                 </v-form>
             </v-card>
           </v-flex>
@@ -68,7 +63,8 @@
 				loading: false,
 				form: {
 					username: null,
-					password: null
+                    password: null,
+                    blocked: false
 				},
 				error: {
 					username: null,

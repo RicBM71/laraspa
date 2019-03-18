@@ -24,11 +24,15 @@ class AuthenticateController extends Controller
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
-            return response()->json(['error' => 'Demasiados intentos espere...!'], 429);
-            //return $this->sendLockoutResponse($request);
+            $seconds = $this->limiter()->availableIn(
+                $this->throttleKey($request)
+            );
+
+            return response()->json(['error' => 'Demasiados intentos. Inténtalo de nuevo en '.$seconds. ' segundos... ' ], 429);
+
         }
 
-		$credentials = $request->only('username', 'password');
+		$credentials = $request->only('username', 'password', 'blocked');
 
 		try {
 			if(!$token = JWTAuth::attempt($credentials)) {
@@ -36,7 +40,7 @@ class AuthenticateController extends Controller
 				return response()->json(['error' => 'Las credenciales no son correctas!'], 401);
 			}
 		} catch(JWTException $e) {
-			return response()->json(['error' => 'Could not create token'], 500);
+			return response()->json(['error' => 'No se ha podido crear el token'], 500);
 		}
 
 		$user = $request->user();
@@ -44,28 +48,5 @@ class AuthenticateController extends Controller
 		return response()->json(compact('token', 'user'));
     }
 
-    public function login(Request $request)
-    {
-        $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
-
-        return $this->sendFailedLoginResponse($request);
-    }
 }

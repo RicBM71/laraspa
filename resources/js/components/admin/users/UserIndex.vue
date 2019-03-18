@@ -30,7 +30,8 @@
 				>
 					<template slot="items" slot-scope="props">
 						<td>{{ props.item.id }}</td>
-						<td class="text-xs-left">{{ props.item.name }}</td>
+						<td  v-if="props.item.blocked == false"  class="text-xs-left">{{ props.item.name }}</td>
+                        <td v-else class="text-xs-left"><span class="red--text">BLOQUEADO -></span></td>
 						<td class="text-xs-left">{{ props.item.username }}</td>
 						<td class="text-xs-left">{{ props.item.email }}</td>
 						<td class="text-xs-left">{{ extrae(props.item.roles) }}</td>
