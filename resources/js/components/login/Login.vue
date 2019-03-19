@@ -21,6 +21,7 @@
 				'setAuthUser'
 			]),
 			loginSuccess(data) {
+                //console.log(data);
 				jwtToken.setToken(data.token);
 				this.setAuthUser(data.user);
 				this.$router.push({name: 'dash'});

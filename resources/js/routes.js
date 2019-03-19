@@ -17,7 +17,7 @@ import RolesEdit from './components/admin/roles/RolesEdit.vue';
 //import ProfileWrapper from './components/profile/ProfileWrapper.vue';
 //import Profile from './components/profile/Profile.vue';
 //import EditProfile from './components/profile/edit-profile/EditProfile.vue';
-//import EditPassword from './components/profile/edit-password/EditPassword.vue';
+import EditPassword from './components/profile/edit-password/EditPassword.vue';
 
 export default [
 	{
@@ -78,6 +78,13 @@ export default [
                 component: RolesEdit,
                 meta: {requiresAuth: true}
             },
+            {
+                path: '/user/password',
+                name: 'edit.password',
+                component: EditPassword,
+                meta: {requiresAuth: true}
+            },
+
 
 		]
     },

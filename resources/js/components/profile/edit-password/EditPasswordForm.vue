@@ -1,92 +1,92 @@
 <template>
 	<div>
-		<form @submit.prevent="updatePassword">
-			<div class="form-group">
-				<label for="new-password">New Password</label>
-				<input
-					type="password"
-					class="form-control"
-					:class="{'is-invalid' : error.new_password}"
-					id="new-password"
-					v-model="form.new_password"
-					:disabled="loading"
-				/>
-				<div class="invalid-feedback" v-show="error.new_password">{{ error.new_password }}</div>
-			</div>
-			<div class="form-group">
-				<label for="confirm-new-password">Confirm New Password</label>
-				<input
-					type="password"
-					class="form-control"
-					:class="{'is-invalid' : error.confirm_new_password}"
-					id="confirm-new-password"
-					v-model="form.confirm_new_password"
-					:disabled="loading"
-				/>
-				<div class="invalid-feedback" v-show="error.confirm_new_password">{{ error.confirm_new_password }}</div>
-			</div>
+		<v-form @submit.prevent="updatePassword">
+            <v-layout row wrap>
+                <v-flex sm3></v-flex>
+                <v-flex sm6>
+                    <v-text-field
+                        v-model="form.new_password"
+                        ref="new_password"
+                        :append-icon="show ? 'visibility_off' : 'visibility'"
+                        :counter="8"
+                        :type="show ? 'text' : 'password'"
+                        :error-messages="errors.collect('new_password')"
+                        v-validate="'required|min:8'"
+                        label="password"
+                        hint="Indicar password "
+                        data-vv-name="new_password"
+                        :disabled="loading"
+                        @click:append="show = !show"
+                        >
+                    </v-text-field>
+                    <v-text-field
+                        v-model="form.password_confirmation"
+                        v-validate="'required|min:8|confirmed:new_password'"
+                        :append-icon="show ? 'visibility_off' : 'visibility'"
+                        :type="show ? 'text' : 'password'"
+                        :error-messages="errors.collect('password_confirmation')"
+                        label="confirmar password"
+                        hint="Confirmar password"
+                        data-vv-name="password_confirmation"
+                        data-vv-as="password"
+                        :disabled="loading"
+                        @click:append="show = !show"
+                        >
+                    </v-text-field>
 
-			<button type="submit" class="btn btn-primary" :disabled="loading">
-				<span v-show="loading">Updating Password</span>
-				<span v-show="!loading">Update Password</span>
-			</button>
-			<div class="form-text text-muted mt-4">
-				Update Password is disabled for demo purpose.
-				<br>
-				Please, enable it from <code>updatePassword()</code> method in EditPasswordForm.vue component
-			</div>
-		</form>
+                    <v-btn @click="submit"  :loading="loading" block  color="primary">
+                        <span v-show="loading">Updating Password</span>
+                        <span v-show="!loading">Actualizar Password</span>
+                    </v-btn>
+                </v-flex>
+            </v-layout>
+		</v-form>
 	</div>
 </template>
 
 <script>
 	import {mapState} from 'vuex'
-	import {api} from "../../../config";
+	import {api} from "@/config";
 
 	export default {
+        $_veeValidate: {
+      		validator: 'new'
+    	},
 		data() {
 			return {
+                show: false,
 				loading: false,
 				form: {
 					new_password: '',
-					confirm_new_password: ''
-				},
-				error: {
-					new_password: '',
-					confirm_new_password: ''
+					password_confirmation: ''
 				}
 			}
 		},
 		methods: {
-			updatePassword() {
-				// uncomment the following 2 lines in your app
-				this.$noty.info('Edit Password is disabled for demo purpose');
-				return;
+			submit() {
 
-				this.loading = true;
-				axios.post(api.updateUserPassword, this.form)
-					.then((res) => {
-						this.loading = false;
-						this.$noty.success('Password updated');
-						this.$emit('updateSuccess');
-					})
-					.catch(err => {
-						(err.response.data.error) && this.$noty.error(err.response.data.error);
+                this.$validator.validateAll().then((result) => {
+                    if (result){
+                        this.loading = true;
+                        axios.post(api.updateUserPassword, this.form)
+                            .then((res) => {
+                               // console.log(res);
+                                this.loading = false;
+                                this.$toast.success(res.data);
+                                this.$emit('updateSuccess');
+                            })
+                            .catch(err => {
+                                //(err.response.data.error) &&  this.$toast.error(err.response.data.error);
 
-						(err.response.data.errors)
-							? this.setErrors(err.response.data.errors)
-							: this.clearErrors();
-
-						this.loading = false;
-					});
-			},
-			setErrors(errors) {
-				this.error.new_password = errors.new_password ? errors.new_password[0] : null;
-				this.error.confirm_new_password = errors.confirm_new_password ? errors.confirm_new_password[0] : null;
-			},
-			clearErrors() {
-				this.error.new_password = null;
-				this.error.confirm_new_password = null;
+                                const msg_valid = err.response.data.errors;
+                                    //console.log(`obj.${prop} = ${msg_valid[prop]}`);
+                                for (const prop in msg_valid) {
+                                    this.$toast.error(`${msg_valid[prop]}`);
+                                }
+                                this.loading = false;
+                            });
+                    }
+                })
 			}
 		}
 	}

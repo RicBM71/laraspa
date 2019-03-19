@@ -1,11 +1,14 @@
 <template>
 	<div>
-		<h3 class="mb-4">Edit Password</h3>
+
+		<h3 class="mb-4">Actualizar Password</h3>
+
 		<div class="card">
 			<div class="card-body">
 				<edit-password-form @updateSuccess="updateSuccess"></edit-password-form>
 			</div>
 		</div>
+
 	</div>
 </template>
 
@@ -18,7 +21,7 @@
 		},
 		methods: {
 			updateSuccess() {
-				this.$router.push({name: 'profile'});
+				this.$router.push({name: 'dash'});
 			}
 		}
 	}

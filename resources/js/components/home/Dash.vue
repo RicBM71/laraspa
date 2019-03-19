@@ -82,7 +82,7 @@
             <v-btn icon v-on:click="home">
                 <v-icon>home</v-icon>
             </v-btn>
-            <v-btn icon v-on:click="dash">
+            <v-btn icon v-on:click="passwd">
                 <v-icon>settings</v-icon>
             </v-btn>
             <strong v-html="user.name"></strong>
@@ -94,16 +94,19 @@
             </v-toolbar>
         <v-content>
             <v-container fluid>
+
                 <router-view></router-view>
+
             </v-container>
         </v-content>
 </v-app>
 </template>
 <script>
-import {siteName} from '../../config';
-import {mapGetters} from 'vuex';
-import jwtToken from '../../helpers/jwt-token';
+import {api} from "@/config";
 import {mapState} from 'vuex'
+import {siteName} from '@/config';
+import {mapGetters} from 'vuex';
+import jwtToken from '@/helpers/jwt-token';
 
 
 export default {
@@ -112,17 +115,17 @@ export default {
         menu: true,
         dialog: false,
         drawer: true,
-        items: [
-            {
+        admin: {
             icon: 'keyboard_arrow_up',
             'icon-alt': 'keyboard_arrow_down',
-            text: 'Administración',
+            text: 'Administrador',
             model: false,
             children: [
                 { text: 'Usuarios', name: 'users' },
                 { text: 'Roles', name: 'roles' },
             ]
-            },
+        },
+        items: [
             { icon: 'settings', text: 'Settings' }
         ]
     }),
@@ -131,27 +134,18 @@ export default {
             user: state => state.auth
         }),
     mounted(){
-        // axios.get('/dash')
-		// 		.then(res => {
-        //            // console.log(res);
-        //             this.menu = true;
-        //             this.titulo = res.data.titulo;
-
-        //             var user = res.data.user;
-        //             if (user == null){
-        //                 this.$router.push("/login");
-        //             }else
-        //                 this.setAuthUser(user);
-
-		// 		})
-		// 		.catch(err => {
-        //             this.menu = false;
-        //             this.$store.dispatch('unsetAuthUser');
-        //             //console.log(err);
-        //             if (err.request.status == 401){ // fallo de validated.
-        //                 this.$router.push("/login");
-        //             }
-		// 		})
+        axios.get(api.dash)
+				.then(res => {
+                    if (res.data.admin){
+                        this.items.push(this.admin);
+                    }
+				})
+				.catch(err => {
+                    this.$store.dispatch('unsetAuthUser');
+                    if (err.request.status == 401){ // fallo de validated.
+                        this.$router.push("/login");
+                    }
+				})
 
     },
     methods:{
@@ -159,10 +153,10 @@ export default {
             this.$router.push({path: name});
         },
         home(){
-            this.$router.push({name: 'index'});
-        },
-        dash(){
             this.$router.push({name: 'dash'});
+        },
+        passwd(){
+            this.$router.push({name: 'edit.password'});
         },
         Logout() {
             //console.log('Logout');
@@ -170,7 +164,7 @@ export default {
 				this.$store.dispatch('unsetAuthUser')
 					.then(() => {
                         //this.$noty.success('You are logged out');
-                        this.$toast.success('Logout, hasta pronto...');
+                        //this.$toast.success('Logout, hasta pronto...');
 						this.$router.push({name: 'index'});
 					});
         },

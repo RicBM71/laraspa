@@ -2,45 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
 	public function show(Request $request)
 	{
-		return $request->user();
-	}
+        return $request->user();
 
-	public function updateProfile(Request $request)
-	{
-		$rules = [
-			'name'  => 'required',
-			'email' => 'required|email|',
-		];
+    }
 
-		$this->validate($request, $rules);
+    public function dash(Request $request){
 
-		$user = $request->user();
-		$user->name = $request->input('name');
-		$user->email = $request->input('email');
-		$user->save();
+        $authUser = $request->user();
+        $admin = $request->user()->hasRole('Admin');
 
-		return response()->json(compact('user'));
-	}
+        if (request()->wantsJson())
+            return (compact('authUser','admin'));
+
+    }
+
 
 	public function updatePassword(Request $request)
 	{
 		$rules = [
-			'new_password'         => 'required',
-			'confirm_new_password' => 'required|same:new_password'
+			'new_password'         => 'min:8|required',
+			'password_confirmation' => 'required|same:new_password'
 		];
 
 		$this->validate($request, $rules);
 
-		$user = $request->user();
-		$user->password = Hash::make($request->input('new_password'));
+        $user = $request->user();
+
+		$user->password = Hash::make($request->input('password'));
 		$user->saveOrFail();
 
-		return response()->json(compact('user'));
+        return response('Se ha modificado la contraseña', 200);
+		//return response()->json(compact('user'));
 	}
 }

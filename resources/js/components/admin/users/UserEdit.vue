@@ -158,8 +158,8 @@
                     </v-flex>
                     <v-flex sm6>
                         <div class="text-xs-center">
-                                    <v-btn @click="submit"  :loading="enviando" block  color="primary">
-                            Guardar Usuario
+                            <v-btn @click="submit"  :loading="enviando" block  color="primary">
+                                Guardar Usuario
                             </v-btn>
                         </div>
                     </v-flex>
@@ -215,7 +215,7 @@
                 show: false,
                 menu2: false,
 
-                showMainDiv: false,
+                showMainDiv: true,
                 showMenuCli: false,
                 x: 0,
                 y: 0,

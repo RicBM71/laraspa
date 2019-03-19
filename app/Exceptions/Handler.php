@@ -46,6 +46,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        // if ($exception instanceof  AccessDeniedHttpException) {
+        //     \Log::info($exception);
+        //     return $this->unauthorized($request, $exception);
+        // }
+
         return parent::render($request, $exception);
     }
+
+    // private function unauthorized($request, Exception $exception)
+    // {
+    //     if ($request->expectsJson()) {
+    //         return response()->json(['error' => 'No autorizado'], 403);
+    //     }
+
+    //     flash()->warning($exception->getMessage());
+
+    //     return redirect()->route('home');
+    // }
 }

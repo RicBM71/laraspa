@@ -139,7 +139,9 @@
                 })
             .catch(err => {
                 this.status = true;
-                this.$toast.error("No se ha podido procesar la petición: ("+err+")");
+               // console.log(err.response.data.message);
+                var msg = err.response.data.message;
+                this.$toast.error(msg);
 
             });
 

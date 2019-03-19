@@ -29,8 +29,6 @@ class UserPolicy
 
         //dd($authUser->id);
 
-        return true;
-
         return $authUser->hasPermissionTo('Usuarios');
     }
 
@@ -73,8 +71,7 @@ class UserPolicy
         if ($user->id === 1)
             return false;
 
-        return $authUser->id !== $user->id
-            && $authUser->hasPermissionTo('Usuarios');
+        return $authUser->hasPermissionTo('Usuarios');
     }
 
     /**
