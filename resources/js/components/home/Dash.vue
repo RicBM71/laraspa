@@ -79,11 +79,11 @@
                 <span class="hidden-sm-and-down">{{ siteName }}</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon v-on:click="Home">
+            <v-btn icon v-on:click="home">
                 <v-icon>home</v-icon>
             </v-btn>
-            <v-btn icon>
-                <v-icon>notifications</v-icon>
+            <v-btn icon v-on:click="dash">
+                <v-icon>settings</v-icon>
             </v-btn>
             <strong v-html="user.name"></strong>
             <v-btn icon large  v-on:click="Logout">
@@ -105,6 +105,7 @@ import {mapGetters} from 'vuex';
 import jwtToken from '../../helpers/jwt-token';
 import {mapState} from 'vuex'
 
+
 export default {
     data: () => ({
         siteName: siteName,
@@ -112,24 +113,24 @@ export default {
         dialog: false,
         drawer: true,
         items: [
-        {
-          icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          text: 'Administración',
-          model: false,
-          children: [
-            { text: 'Usuarios', name: 'users' },
-            { text: 'Roles', name: 'roles' },
-          ]
-        },
-        { icon: 'settings', text: 'Settings' }
-      ]
+            {
+            icon: 'keyboard_arrow_up',
+            'icon-alt': 'keyboard_arrow_down',
+            text: 'Administración',
+            model: false,
+            children: [
+                { text: 'Usuarios', name: 'users' },
+                { text: 'Roles', name: 'roles' },
+            ]
+            },
+            { icon: 'settings', text: 'Settings' }
+        ]
     }),
-    computed: mapState({
-			user: state => state.auth
-		}),
+    computed:
+        mapState({
+            user: state => state.auth
+        }),
     mounted(){
-
         // axios.get('/dash')
 		// 		.then(res => {
         //            // console.log(res);
@@ -157,7 +158,10 @@ export default {
         abrir(name){
             this.$router.push({path: name});
         },
-        Home(){
+        home(){
+            this.$router.push({name: 'index'});
+        },
+        dash(){
             this.$router.push({name: 'dash'});
         },
         Logout() {

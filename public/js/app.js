@@ -2361,6 +2361,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2523,6 +2534,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserRole__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserRole */ "./resources/js/components/admin/users/UserRole.vue");
 /* harmony import */ var _UserPermiso__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserPermiso */ "./resources/js/components/admin/users/UserPermiso.vue");
 /* harmony import */ var _components_shared_Modmenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/shared/Modmenu */ "./resources/js/components/shared/Modmenu.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3361,7 +3385,12 @@ __webpack_require__.r(__webpack_exports__);
         path: name
       });
     },
-    Home: function Home() {
+    home: function home() {
+      this.$router.push({
+        name: 'index'
+      });
+    },
+    dash: function dash() {
       this.$router.push({
         name: 'dash'
       });
@@ -34297,6 +34326,23 @@ var render = function() {
             { on: { contextmenu: _vm.showMenu } },
             [
               _c(
+                "v-btn",
+                {
+                  attrs: {
+                    fixed: "",
+                    dark: "",
+                    fab: "",
+                    bottom: "",
+                    right: "",
+                    color: "teal accent-4"
+                  },
+                  on: { click: _vm.showMenu }
+                },
+                [_c("v-icon", [_vm._v("add")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
                 "v-layout",
                 { attrs: { row: "", wrap: "" } },
                 [
@@ -34680,6 +34726,23 @@ var render = function() {
             "v-container",
             { on: { contextmenu: _vm.showMenu } },
             [
+              _c(
+                "v-btn",
+                {
+                  attrs: {
+                    fixed: "",
+                    dark: "",
+                    fab: "",
+                    bottom: "",
+                    right: "",
+                    color: "teal accent-4"
+                  },
+                  on: { click: _vm.showMenu }
+                },
+                [_c("v-icon", [_vm._v("add")])],
+                1
+              ),
+              _vm._v(" "),
               _c(
                 "v-layout",
                 { attrs: { row: "", wrap: "" } },
@@ -35638,15 +35701,15 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { icon: "" }, on: { click: _vm.Home } },
+                { attrs: { icon: "" }, on: { click: _vm.home } },
                 [_c("v-icon", [_vm._v("home")])],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { icon: "" } },
-                [_c("v-icon", [_vm._v("notifications")])],
+                { attrs: { icon: "" }, on: { click: _vm.dash } },
+                [_c("v-icon", [_vm._v("settings")])],
                 1
               ),
               _vm._v(" "),

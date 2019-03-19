@@ -4,6 +4,17 @@
         <h2>Usuarios</h2>
         <v-form>
             <v-container @contextmenu="showMenu">
+                <v-btn
+                    @click="showMenu"
+                    fixed
+                    dark
+                    fab
+                    bottom
+                    right
+                    color="teal accent-4"
+                    >
+                    <v-icon>add</v-icon>
+                </v-btn>
                 <v-layout row wrap>
                     <v-flex sm4>
                         <v-text-field
