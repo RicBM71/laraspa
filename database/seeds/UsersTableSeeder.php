@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         Role::truncate();
         User::truncate();
 
+        $rootRole = Role::create(['name'=>'Root']);
         $adminRole = Role::create(['name'=>'Admin']);
         $userRole = Role::create(['name'=>'Usuario']);
 
@@ -43,7 +44,7 @@ class UsersTableSeeder extends Seeder
 		$user->username = "ricardo.bm";
 		$user->password = Hash::make('123');
 		$user->save();
-        $user->assignRole($adminRole);
+        $user->assignRole($rootRole);
 
 
         for ($i=2; $i <= 10  ; $i++) {

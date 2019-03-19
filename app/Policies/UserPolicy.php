@@ -12,7 +12,7 @@ class UserPolicy
 // esto se ejecuta antes de cualquier método
     public function before($authUser)
     {
-        if($authUser->hasRole('Admin')){
+        if($authUser->hasRole('Root')){
             return true;
         }
     }
@@ -28,6 +28,7 @@ class UserPolicy
     {
 
         //dd($authUser->id);
+        return $authUser->hasRole('Admin');
 
         return $authUser->hasPermissionTo('Usuarios');
     }
@@ -40,6 +41,7 @@ class UserPolicy
      */
     public function create(User $authUser)
     {
+        return $authUser->hasRole('Admin');
         return $authUser->hasPermissionTo('Usuarios');
     }
 
@@ -53,9 +55,12 @@ class UserPolicy
     public function update(User $authUser, User $user)
     {
 
-        if ($user->id == 1 && $authUser->id != 1) return false;
 
-        return $authUser->hasPermissionTo('Usuarios');
+       if ($user->id == 1 && !$authUser->hasRole('Root')) return false;
+
+       return $authUser->hasRole('Admin');
+
+       // return $authUser->hasPermissionTo('Usuarios');
     }
 
     /**
@@ -71,7 +76,8 @@ class UserPolicy
         if ($user->id === 1)
             return false;
 
-        return $authUser->hasPermissionTo('Usuarios');
+        return $authUser->hasRole('Admin');
+        //return $authUser->hasPermissionTo('Usuarios');
     }
 
     /**

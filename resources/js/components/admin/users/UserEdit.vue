@@ -235,7 +235,7 @@
                 var id = this.$route.params.id;
                 axios.get('/admin/users/'+id+'/edit')
                     .then(res => {
-                        //console.log(res.data.role_user);
+                        //console.log(res.data);
                         this.showMainDiv=true;
                         this.user = res.data.user;
                         this.role_user = res.data.role_user;

@@ -22,9 +22,9 @@ Route::group([
         Route::resource('roles', 'RolesController', ['as' => 'admin']);
         Route::resource('permissions', 'PermissionsController', ['except'=>'show', 'as' => 'admin']);
 
-        Route::middleware('role:Admin')
+        Route::middleware('role:Root|Admin')
             ->put('users/{user}/roles','UsersRolesController@update');
-        Route::middleware('role:Admin')
+        Route::middleware('role:Root|Admin')
 			->put('users/{user}/permissions','UsersPermissionsController@update');
 
 

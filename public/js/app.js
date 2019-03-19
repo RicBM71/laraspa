@@ -2774,7 +2774,7 @@ __webpack_require__.r(__webpack_exports__);
     var id = this.$route.params.id;
     if (id > 0) var id = this.$route.params.id;
     axios.get('/admin/users/' + id + '/edit').then(function (res) {
-      //console.log(res.data.role_user);
+      //console.log(res.data);
       _this.showMainDiv = true;
       _this.user = res.data.user;
       _this.role_user = res.data.role_user;
@@ -3201,7 +3201,7 @@ __webpack_require__.r(__webpack_exports__);
         //console.log(res);
         _this2.$toast.success(res.data);
       }).catch(function (err) {
-        console.log(err);
+        //console.log(err);
         var msg_valid = err.response.data.errors;
 
         for (var prop in msg_valid) {
@@ -3341,7 +3341,7 @@ __webpack_require__.r(__webpack_exports__);
       menu: true,
       dialog: false,
       drawer: true,
-      admin: {
+      root: {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
         text: 'Administrador',
@@ -3352,6 +3352,16 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           text: 'Roles',
           name: 'roles'
+        }]
+      },
+      admin: {
+        icon: 'keyboard_arrow_up',
+        'icon-alt': 'keyboard_arrow_down',
+        text: 'Administrador',
+        model: false,
+        children: [{
+          text: 'Usuarios',
+          name: 'users'
         }]
       },
       items: [{
@@ -3369,7 +3379,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get(_config__WEBPACK_IMPORTED_MODULE_0__["api"].dash).then(function (res) {
-      if (res.data.admin) {
+      console.log(res);
+
+      if (res.data.role.root) {
+        _this.items.push(_this.root);
+      } else if (res.data.role.admin) {
         _this.items.push(_this.admin);
       }
     }).catch(function (err) {

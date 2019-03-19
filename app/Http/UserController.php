@@ -18,10 +18,16 @@ class UserController extends Controller
     public function dash(Request $request){
 
         $authUser = $request->user();
-        $admin = $request->user()->hasRole('Admin');
+
+        $admin = ($request->user()->hasRole('Root') || $request->user()->hasRole('Admin'));
+
+        $role=[
+            'root'=>$request->user()->hasRole('Root'),
+            'admin'=>$request->user()->hasRole('Admin'),
+        ];
 
         if (request()->wantsJson())
-            return (compact('authUser','admin'));
+            return (compact('authUser','role'));
 
     }
 

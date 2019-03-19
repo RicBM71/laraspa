@@ -19,7 +19,10 @@ class RolesController extends Controller
     public function index()
     {
 
-        $data = Role::all();
+        if (!auth()->user()->hasRole('Root'))
+            $data = Role::whereNotIn('name', ['Root'])->get();
+        else
+            $data = Role::all();
 
         if (request()->wantsJson())
             return [

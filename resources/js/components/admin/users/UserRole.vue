@@ -71,7 +71,7 @@ export default {
                     this.$toast.success(res.data);
                 })
                 .catch(err => {
-                    console.log(err);
+                    //console.log(err);
                     const msg_valid = err.response.data.errors;
                     for (const prop in msg_valid) {
                         this.$toast.error(`${msg_valid[prop]}`);

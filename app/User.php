@@ -68,7 +68,12 @@ class User extends Authenticatable implements JWTSubject
     */
     public function scopePermitidos($query)
     {
-        return $query->with('roles');
+
+        if (auth()->user()->hasRole('Root'))
+            return $query->with('roles');
+        else {
+            return $query->where('id', '>', 1)->with('roles');
+        }
         //dd(auth()->user()->can('view', $this));
 
         if (auth()->user()->can('view', $this)){ // busca la política e UserPolicy, pasar instancia
@@ -110,7 +115,7 @@ class User extends Authenticatable implements JWTSubject
     {
         $this->notify(new ResetPasswordNotification($token));
     }
-    
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

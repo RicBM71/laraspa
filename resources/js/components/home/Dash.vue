@@ -115,7 +115,8 @@ export default {
         menu: true,
         dialog: false,
         drawer: true,
-        admin: {
+
+        root: {
             icon: 'keyboard_arrow_up',
             'icon-alt': 'keyboard_arrow_down',
             text: 'Administrador',
@@ -125,6 +126,17 @@ export default {
                 { text: 'Roles', name: 'roles' },
             ]
         },
+
+        admin: {
+            icon: 'keyboard_arrow_up',
+            'icon-alt': 'keyboard_arrow_down',
+            text: 'Administrador',
+            model: false,
+            children: [
+                { text: 'Usuarios', name: 'users' },
+            ]
+        },
+
         items: [
             { icon: 'settings', text: 'Settings' }
         ]
@@ -136,7 +148,10 @@ export default {
     mounted(){
         axios.get(api.dash)
 				.then(res => {
-                    if (res.data.admin){
+                    console.log(res);
+                    if (res.data.role.root){
+                        this.items.push(this.root);
+                    }else if(res.data.role.admin){
                         this.items.push(this.admin);
                     }
 				})

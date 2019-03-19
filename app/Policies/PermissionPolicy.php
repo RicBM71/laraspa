@@ -12,15 +12,15 @@ class PermissionPolicy
 
     public function before($authUser)
     {
-        
-        if($authUser->hasRole('Admin')){
+
+        if($authUser->hasRole('Root')){
             return true;
         }
-        
+
     }
 
     public function view(User $user, Permission $permsion)
     {
-        return $user->hasRole('Admin');
+        return $user->hasRole('Root');
     }
 }
