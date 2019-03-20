@@ -148,7 +148,7 @@ export default {
     mounted(){
         axios.get(api.dash)
 				.then(res => {
-                    console.log(res);
+                    //console.log(res);
                     if (res.data.role.root){
                         this.items.push(this.root);
                     }else if(res.data.role.admin){

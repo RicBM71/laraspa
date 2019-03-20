@@ -155,7 +155,7 @@
     import moment from 'moment'
     import UserRole from './UserRole'
     import UserPermiso from './UserPermiso'
-    import ModMenu from '@/components/shared/Modmenu'
+    import ModMenu from '@/components/shared/ModMenu'
 
 	export default {
 		$_veeValidate: {
